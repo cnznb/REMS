@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeGPT-small-java" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CodeGPT-small-java-adaptedGPT2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/codet5-base-multi-sum" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cotext-2-cc" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/graphcodebert-base" vcs="Git" />
+  </component>
+</project>
