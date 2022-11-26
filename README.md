@@ -5,3 +5,23 @@ This document is included in the 'Recommending Extract Method Refactoring Opport
 /Training_CSV: The training data of feature fusion with code embedding and graph embedding \
 /GEMS_test_data: The test data of feature fusion with code embedding and graph embedding \
 /
+
+# Tools
+## code embedding network
+CodeBERT GraphCodeBERT CodeGPT CodeT5 CoTexT PLBART
+## graph embedding network 
+DeepWalk LINE Node2vec GraRep SDNE ProNE walklets
+# Requirement
+## CodeBERT, GraphCodeBERT, CodeGPT, CodeT5, CoTexT, PLBART
+python3(>=3.6). / 
+torch transformers
+## DeepWalk，LINE ，Node2vec，GraRep，SDNE
+hey all come from the open source project OpenNE /
+numpy==1.14 networkx==2.0 scipy==0.19.1 tensorflow>=1.12.1 gensim==3.0.1 scikit-learn==0.19.0
+## ProNE
+numpy sklearn networkx gensim
+## walklets
+tqdm 4.28.1 numpy 1.15.4 pandas 0.23.4 texttable 1.5.0 gensim 3.6.0 networkx 2.4
+# Quickstart
+
+# datasets

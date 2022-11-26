@@ -30,23 +30,6 @@ def read_fileproject(java_project):
                 files_list.append(os.path.join(root, file))
     return files_list
 
-
-# def get_embedding(file_name):
-    # output = subprocess.run([r"E:\srcML\srcml.exe", file_name], capture_output=True, check=False)
-    # root = etree.fromstring(output.stdout)
-    # com_texts = []
-    # contents = []
-    # for com in root.xpath('//*[local-name() = "comment"]'):
-    #     com_text = "".join(com.xpath('.//text()'))
-    #     com_texts.append(com_text)
-    # for bad in root.xpath('//*[local-name() = "comment"]'):
-    #     bad.getparent().remove(bad)
-    # for funcs in root.xpath('.//*[local-name() = "function"]'):
-    #     content = "".join(funcs.xpath('.//text()'))
-    #     contents.append(content)
-    # nl_str = "\n".join(com_texts)
-    # cl_str = "\n".join(contents)
-    # nl_tokens = tokenizer.tokenize(nl_str)
 def get_embedding(text):
     code_tokens = tokenizer.tokenize(text)
     tokens = [tokenizer.bos_token] + code_tokens + [tokenizer.eos_token]

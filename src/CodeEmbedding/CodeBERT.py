@@ -28,7 +28,6 @@ def get_embedding(text):
     cl_tokens = tokenizer.tokenize(text)
     tokens = [tokenizer.cls_token] + cl_tokens + [tokenizer.sep_token]
     tokens_ids = tokenizer.convert_tokens_to_ids(tokens)
-    # print(len(tokens_ids))
     embedding = []
     index = 0
     while (index + 512) < len(tokens_ids):
@@ -40,13 +39,6 @@ def get_embedding(text):
             model(torch.tensor(tokens_ids[index:len(tokens_ids)])[None, :]).last_hidden_state[0].detach().numpy()[0].tolist())
     embedding = np.array(embedding).reshape((-1, 768)).mean(axis=0).tolist()
     return embedding
-
-
-def isValidLine(number, valid):
-    for r in valid:
-        if r[0] <= number <= r[1]:
-            return True
-    return False
 
 
 if __name__ == '__main__':
@@ -66,11 +58,7 @@ if __name__ == '__main__':
         print(f_name)
         f_open = open(f_name, "r", encoding='utf-8')
         codes = f_open.readlines()
-        # r_open = open(file_path + "/method_range.csv", "r", encoding="utf-8")
-        # line_ranges = r_open.readlines()[0].split(',')
-        # r_open.close()
         f_open.close()
-        # print(line_ranges)
         if len(codes) == 0:
             print("源码为空，略过")
             continue
@@ -85,7 +73,6 @@ if __name__ == '__main__':
         for line in codes:
             line_number += 1
             if line in ['\n', '\r\n'] or line.strip() == "":
-                    # or not isValidLine(line_number, validLines)\
                 continue
             else:
                 vec = get_embedding(line)
@@ -96,8 +83,6 @@ if __name__ == '__main__':
             cw = csv.writer(wf)
             for data in vecs:
                 cw.writerow(data)
-        # json.dump(vecs, vecs_out)
-        # vecs_out.close()
         json.dump(lines, lines_out)
         lines_out.close()
 
