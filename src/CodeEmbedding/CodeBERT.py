@@ -55,12 +55,6 @@ if __name__ == '__main__':
     for file_name in file_list:
         file_path = set_path + "/" + file_name
         files = os.listdir(file_path)  # sets\{文件名}\下的各个文件
-        # if file_name + "_CodeBERT_vector.txt" in files:
-        #     print("已经生成了CodeBert向量，跳过。")
-        #     continue
-        # if file_name + "_old.java" not in files:
-        #     print("该文件没有对应的源码文件，略过")
-        #     continue
         f_name = ''
         for f in files:
             if f.endswith('.java'):
@@ -85,12 +79,6 @@ if __name__ == '__main__':
         # vecs_out = open(vecs_out_file, "w")
         lines_out_file = file_path + "/bert_vec/CodeBERT_lines.txt"
         lines_out = open(lines_out_file, "w")
-        # try:
-        #     ranges = pd.read_csv(file_path + "\\" + file_name + "_ranges.csv", header=None)
-        # except:
-        #     print("有效代码行范围为空，略过")
-        #     continue
-        # validLines = ranges.values.tolist()
         vecs = []
         lines = []
         line_number = 0
