@@ -22,6 +22,7 @@ GraphCodeBERT: https://huggingface.co/microsoft/graphcodebert-base \
 CodeT5: https://huggingface.co/Salesforce/codet5-base-multi-sum \
 CoTexT: https://huggingface.co/razent/cotext-2-cc \
 PLBART: https://huggingface.co/uclanlp/plbart-base 
+
 ## DeepWalk，LINE ，Node2vec，GraRep，SDNE
 hey all come from the open source project OpenNE \
 numpy==1.14 networkx==2.0 scipy==0.19.1 tensorflow>=1.12.1 gensim==3.0.1 scikit-learn==0.19.0
@@ -31,4 +32,27 @@ numpy sklearn networkx gensim
 tqdm 4.28.1 numpy 1.15.4 pandas 0.23.4 texttable 1.5.0 gensim 3.6.0 networkx 2.4
 # Quickstart
 
-# datasets
+> step1: We use graph embedding networks such as DeepWalk to embedding the structural information of the code dependencies of the code property graph
+
+$$
+eg:\ \ \ \ \ \ \ \ \ \   feature_1\ feature_2\ ...\ feature_{n}\ \ 0.16\ 0.78\ ... \ 0.92
+$$
+
+> step2: We use code embedding networks such as CodeBERT to embedding the semantic information of the code and get the vectors corresponding to the methods
+
+$$
+eg:\ \ \ \ \ \ \ \ \ \   feature_1\ feature_2\ ...\ feature_{m}\ \ 0.74\ 0.58\ ... \ 0.67
+$$
+
+> step3: We use Compact Bilinear Pooling for embedding fusion and get the hybrid vectors
+
+> step4: We train the training set using classifiers commonly used in machine learning and deep learning, and optimize the hyperparameters using grid search
+
+> step5: Model evaluation on the real-world dataset
+
+# Datasets
+
+train data: [why-we-refactor](https://aserg-ufmg.github.io/why-we-refactor/#/ ) 
+
+real world data: JHotDraw JUnit MyWebMarket SelfPlanner WikiDev
+

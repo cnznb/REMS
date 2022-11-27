@@ -1,5 +1,6 @@
 import csv
 import os
+import sys
 import torch
 import numpy as np
 from transformers import AutoTokenizer, AutoModel
@@ -8,11 +9,14 @@ from sklearn import preprocessing
 # 使用CodeT5生成各文件源码中被重构函数的各代码行生成的文本向量
 # 其中一些文件的源码为空 或者是 有效代码行为空   这些文件不会生成对应向量文件
 
+model_path = sys.argv[1]
+dataset_path = sys.argv[2]
+
 np.set_printoptions(suppress=True)
 ss = preprocessing.StandardScaler()
 print('Start To Load Pretrain Model ... ...')
-tokenizer = AutoTokenizer.from_pretrained(r"../../REMS/model/codet5-base-multi-sum")
-model = AutoModel.from_pretrained(r"../../REMS/model/codet5-base-multi-sum")
+tokenizer = AutoTokenizer.from_pretrained(model_path)
+model = AutoModel.from_pretrained(model_path)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 print('Finish Loading Pretrain Model ! !')
@@ -35,7 +39,7 @@ def get_embedding(text):
 
 
 if __name__ == '__main__':
-    set_path = r"../../REMS/data_demo"
+    set_path = dataset_path
     files = os.listdir(set_path)  # data_demo/下的各个文件
     f_name = ''
     # 找到目录下的java格式文件
