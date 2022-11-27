@@ -13,10 +13,17 @@ CodeBERT GraphCodeBERT CodeGPT CodeT5 CoTexT PLBART
 DeepWalk LINE Node2vec GraRep SDNE ProNE walklets
 # Requirement
 ## CodeBERT, GraphCodeBERT, CodeGPT, CodeT5, CoTexT, PLBART
-python3(>=3.6). / 
-torch transformers
+python3(>=3.6) \
+torch transformers \
+pre-trained model link: \
+CodeBERT: https://huggingface.co/microsoft/codebert-base \
+CodeGPT: https://huggingface.co/microsoft/CodeGPT-small-java-adaptedGPT2 \
+GraphCodeBERT: https://huggingface.co/microsoft/graphcodebert-base \
+CodeT5: https://huggingface.co/Salesforce/codet5-base-multi-sum \
+CoTexT: https://huggingface.co/razent/cotext-2-cc \
+PLBART: https://huggingface.co/uclanlp/plbart-base 
 ## DeepWalk，LINE ，Node2vec，GraRep，SDNE
-hey all come from the open source project OpenNE /
+hey all come from the open source project OpenNE \
 numpy==1.14 networkx==2.0 scipy==0.19.1 tensorflow>=1.12.1 gensim==3.0.1 scikit-learn==0.19.0
 ## ProNE
 numpy sklearn networkx gensim
