@@ -34,15 +34,11 @@ tqdm 4.28.1 numpy 1.15.4 pandas 0.23.4 texttable 1.5.0 gensim 3.6.0 networkx 2.4
 
 > step1: We use graph embedding networks such as DeepWalk to embedding the structural information of the code dependencies of the code property graph
 
-$$
-eg:\ \ \ \ \ \ \ \ \ \   feature_1\ feature_2\ ...\ feature_{n}\ \ 0.16\ 0.78\ ... \ 0.92
-$$
+eg: feature1 feature2 ... featuren  0.16 0.78 ... 0.92
 
 > step2: We use code embedding networks such as CodeBERT to embedding the semantic information of the code and get the vectors corresponding to the methods
 
-$$
-eg:\ \ \ \ \ \ \ \ \ \   feature_1\ feature_2\ ...\ feature_{m}\ \ 0.74\ 0.58\ ... \ 0.67
-$$
+eg: feature1 feature2 ... featurem  0.74 0.58 ... 0.67
 
 > step3: We use Compact Bilinear Pooling for embedding fusion and get the hybrid vectors
 
@@ -52,7 +48,7 @@ $$
 
 # Datasets
 
-train data: [why-we-refactor](https://aserg-ufmg.github.io/why-we-refactor/#/ ) 
+train data: [why-we-refactor](https://aserg-ufmg.github.io/why-we-refactor/#/) 
 
 real world data: JHotDraw JUnit MyWebMarket SelfPlanner WikiDev
 

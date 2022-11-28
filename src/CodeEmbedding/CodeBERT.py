@@ -1,3 +1,10 @@
+# -*- encoding = utf-8 -*-
+"""
+@description: 使用CodeBERT生成各文件源码中被重构函数的各代码行生成的文本向量
+@date: 2022/9/4
+@File : CodeBERT.py
+@Software : PyCharm
+"""
 import csv
 import os
 import sys
@@ -7,12 +14,10 @@ from transformers import AutoTokenizer, AutoModel
 from sklearn import preprocessing
 import json
 
-# 使用CodeBERT生成各文件源码中被重构函数的各代码行生成的文本向量
-# 其中一些文件的源码为空 或者是 有效代码行为空   这些文件不会生成对应向量文件
+model_path = sys.argv[1]  # CodeBERT预训练模型目录
+dataset_path = sys.argv[2]  # dataset目录
 
-model_path = sys.argv[1]
-dataset_path = sys.argv[2]
-
+# 预训练
 print("开始测试")
 np.set_printoptions(suppress=True)
 ss = preprocessing.StandardScaler()
@@ -43,7 +48,7 @@ def get_embedding(text):
 
 if __name__ == '__main__':
     set_path = dataset_path
-    files = os.listdir(set_path)  # data_demo/下的各个文件
+    files = os.listdir(set_path)  # dataset下的各个文件
     f_name = ''
     # 找到目录下的java格式文件
     for f in files:
