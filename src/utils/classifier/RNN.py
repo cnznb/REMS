@@ -133,10 +133,9 @@ def train(X_train, y_train):
     KC = KerasClassifier(build_fn=creat_model, verbose=1)
     param_grid = dict(batch_size=batch_size, epochs=epochs)
     grid = GridSearchCV(estimator=KC, param_grid=param_grid, n_jobs=4, cv=5)
-    model = grid.best_estimator_
     # 把数据交给模型训练
-    model.fit(X_train, y_train)
-    test(model, _REMS_project_file, _training_data_path)
+    grid.fit(X_train, y_train)
+    test(model, _REMS_project_path, _training_data_path)
 
 
 if __name__ == '__main__':

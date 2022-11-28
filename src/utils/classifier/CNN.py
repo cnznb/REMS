@@ -131,7 +131,7 @@ def train(X_train, y_train, lens):
     model_path = _training_data_path.split("\\")[-1].split(".")[0] + "_model"
     model.save(model_path)
     load_model = tf.keras.models.load_model(model_name)
-    test(load_model, _REMS_project_file, _training_data_path)
+    test(load_model, _REMS_project_path, _training_data_path)
 
 
 if __name__ == '__main__':

@@ -80,10 +80,9 @@ def train(X_train, y_train):
     # 生成模型
     print("Start trainging : " + "\n")
     grid = GridSearchCV(BernoulliNB(), tuned_parameters, cv=5, scoring='roc_auc', verbose=2, n_jobs=4)
-    model = grid.best_estimator_
     # 把数据交给模型训练
-    model.fit(X_train, y_train)
-    test(model, _REMS_project_file, _training_data_path)
+    grid.fit(X_train, y_train)
+    test(model, _REMS_project_path, _training_data_path)
 
 
 if __name__ == '__main__':
