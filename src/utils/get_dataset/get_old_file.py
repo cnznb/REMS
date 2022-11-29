@@ -89,4 +89,4 @@ for f in tqdm(files):
         splits = file_path.split('/')
         subprocess.Popen(
             "git show " + f + "^^:" + file_path + " > " + to + f + '/' + splits[-1],
-            cwd=os.path.dirname(dir + no[f] + '/'), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            cwd=os.path.dirname(to + f), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
