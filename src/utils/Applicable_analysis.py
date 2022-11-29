@@ -59,7 +59,7 @@ def judge(path, file):
     if 'break' in splits_extract or 'continue' in splits_extract or 'return' in splits_extract:
         return False
     # Behaviour Preservation Preconditions: 重构候选对象和重命名方法不应该包含任何影响对象状态的重复语句，因为重复语句将被执行两次
-    if not extract_lines.intersection(ex_extract_lines):
+    if extract_lines.intersection(ex_extract_lines):
         return False
     return True
 
