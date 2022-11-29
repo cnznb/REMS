@@ -1,0 +1,27 @@
+--------------------------Source Methods------------------------------
+
+public java.awt.Image getImage(java.lang.String filename) {
+    java.awt.Image image = basicGetImage(filename);
+    if (image != null)
+        return image;
+    
+    loadRegisteredImages(fComponent);
+    if (fMap.containsKey(filename))
+        return ((java.awt.Image) (fMap.get(filename)));
+    
+    return null;
+    {
+        java.awt.Image image = basicGetImage(filename);
+        if (image != null)
+            return image;
+        
+        loadRegisteredImages(fComponent);
+        if (fMap.containsKey(filename))
+            return ((java.awt.Image) (fMap.get(filename)));
+        
+        return null;
+    }
+}
+
+--------------------------end-----------------------------
+

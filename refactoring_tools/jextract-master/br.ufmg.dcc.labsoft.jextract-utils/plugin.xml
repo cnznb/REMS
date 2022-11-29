@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="br.ufmg.dcc.labsoft.jextractutils.contribution1"
+            objectClass="org.eclipse.core.resources.IProject">
+         <menu
+               id="br.ufmg.dcc.labsoft.jextractutils.projectMenu"
+               label="JExtract Utils"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="br.ufmg.dcc.labsoft.jextractutils.ui.UtilsProjectMenuAction"
+               enablesFor="1"
+               id="br.ufmg.dcc.labsoft.jextractutils.showGoldset"
+               label="Show Extract Method Instances in Oracle"
+               menubarPath="br.ufmg.dcc.labsoft.jextractutils.projectMenu/group1">
+         </action>
+         <action
+               class="br.ufmg.dcc.labsoft.jextractutils.ui.UtilsProjectMenuAction"
+               enablesFor="+"
+               id="br.ufmg.dcc.labsoft.jextractutils.evaluate"
+               label="Evaluate JExtract"
+               menubarPath="br.ufmg.dcc.labsoft.jextractutils.projectMenu/group1">
+         </action>
+         <action
+               class="br.ufmg.dcc.labsoft.jextractutils.ui.UtilsProjectMenuAction"
+               enablesFor="+"
+               id="br.ufmg.dcc.labsoft.jextractutils.evaluateFromFile"
+               label="Evaluate Recommendations from File"
+               menubarPath="br.ufmg.dcc.labsoft.jextractutils.projectMenu/group1">
+         </action>
+         <action
+               class="br.ufmg.dcc.labsoft.jextractutils.ui.UtilsProjectMenuAction"
+               enablesFor="+"
+               id="br.ufmg.dcc.labsoft.jextractutils.rewriteVisibility"
+               label="Change Visibility to Public"
+               menubarPath="br.ufmg.dcc.labsoft.jextractutils.projectMenu/group1">
+         </action>
+         <action
+               class="br.ufmg.dcc.labsoft.jextractutils.ui.UtilsProjectMenuAction"
+               enablesFor="+"
+               id="br.ufmg.dcc.labsoft.jextractutils.inlineMethods"
+               label="Synthesize Extract Method Instances"
+               menubarPath="br.ufmg.dcc.labsoft.jextractutils.projectMenu/group1">
+         </action>
+         <action
+               class="br.ufmg.dcc.labsoft.jextractutils.ui.UtilsProjectMenuAction"
+               enablesFor="+"
+               id="br.ufmg.dcc.labsoft.jextractutils.extractGoldSet"
+               label="Create Oracle File from Markers"
+               menubarPath="br.ufmg.dcc.labsoft.jextractutils.projectMenu/group1">
+         </action>
+      </objectContribution>
+   </extension>
+   
+</plugin>
