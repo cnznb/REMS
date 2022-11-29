@@ -4,7 +4,7 @@ This document is included in the 'Recommending Extract Method Refactoring Opport
 /src: The code files which is involved in the experiment \
 /Training_CSV: The training data of feature fusion with code embedding and graph embedding \
 /GEMS_test_data: The test data of feature fusion with code embedding and graph embedding \
-/refactoring_tools: extract method refactoring tools involved in the paper
+/refactoring_tools: Extract method refactoring tools involved in the paper
 # Tools
 ## code embedding network
 CodeBERT GraphCodeBERT CodeGPT CodeT5 CoTexT PLBART
@@ -13,7 +13,9 @@ DeepWalk LINE Node2vec GraRep SDNE ProNE walklets
 # Requirement
 ## CodeBERT, GraphCodeBERT, CodeGPT, CodeT5, CoTexT, PLBART
 python3(>=3.6) \
+we use python 3.9\
 torch transformers \
+we use torch(1.12.0) and transformers(4.20.1)\
 pre-trained model link: \
 CodeBERT: https://huggingface.co/microsoft/codebert-base \
 CodeGPT: https://huggingface.co/microsoft/CodeGPT-small-java-adaptedGPT2 \
