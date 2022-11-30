@@ -4,7 +4,9 @@ This document is included in the 'Recommending Extract Method Refactoring Opport
 /src: The code files which is involved in the experiment \
 /Training_CSV: The training data of feature fusion with code embedding and graph embedding \
 /GEMS_test_data: The test data of feature fusion with code embedding and graph embedding \
-/refactoring_tools: Extract method refactoring tools involved in the paper
+/refactoring_tools: Extract method refactoring tools involved in the paper \
+/RQ3_questionnaire: the questionnaire and the questionnaire results of 10 participants \
+/sampled_methods: sampled methods from Xu et al.’s dataset
 # Tools
 ## code embedding network
 CodeBERT GraphCodeBERT CodeGPT CodeT5 CoTexT PLBART
