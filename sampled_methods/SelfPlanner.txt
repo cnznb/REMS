@@ -1,0 +1,24 @@
+public static Task[] sortTasks(Task[] tasks) {
+    Task[] sorted = new Task[tasks.length];
+    boolean[] ord = new boolean[tasks.length];
+    int num = 0;
+    int min = 0;
+    for (int i = 0; i < ord.length; i++) {
+        ord[i] = false;
+    }
+    while (num < tasks.length) {
+        /*{*/min = Integer.MAX_VALUE;
+        for (int i = 0; i < tasks.length; i++) {
+            if ((!ord[i] && min == Integer.MAX_VALUE) ||
+                (!ord[i] &&
+                    tasks[i].domain().releaseDate().compareTo(tasks[min].domain().
+                    releaseDate()) < 0)) {
+                min = i;
+            }
+        }/*{*/
+        ord[min] = true;
+        sorted[num] = tasks[min];
+        num++;
+    }
+    return sorted;
+}

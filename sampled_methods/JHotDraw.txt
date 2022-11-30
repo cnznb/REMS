@@ -1,0 +1,27 @@
+public void promptOpen() {
+    toolDone();
+    JFileChooser openDialog = createOpenFileChooser();
+    getStorageFormatManager().registerFileFilters(openDialog);
+    if (openDialog.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+        StorageFormat foundFormat = getStorageFormatManager().findStorageFormat(openDialog.getFileFilter());
+        if (foundFormat != null) {
+            /*{*/String file = openDialog.getSelectedFile().getAbsolutePath();
+            try {
+                Drawing restoredDrawing = foundFormat.restore(file);
+                if (restoredDrawing != null) {
+                    newWindow();
+                    setDrawing(restoredDrawing);
+                    setDrawingTitle(file);
+                }
+                else {
+                    showStatus("Unknown file type: could not open file '" + file + "'");
+                }
+            } catch (IOException e) {
+                showStatus("Error: " + e);
+            }/*}*/
+        }
+        else {
+            showStatus("Not a valid file format: " + openDialog.getFileFilter().getDescription());
+        }
+    }
+}
