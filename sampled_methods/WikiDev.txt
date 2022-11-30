@@ -1,0 +1,130 @@
+public void getRelationships() throws SQLException {
+	ArrayList<String> buffers = new ArrayList<String>();
+	/*{*/for(IArtifact artifact : artifacts) {
+		
+		if(artifact instanceof Ticket) {
+			TextParser parser = new TextParser();
+			Ticket ticket = (Ticket)artifact;
+			parser.parseTextInWords(ticket.getDesription().toLowerCase());
+			parser.parseTextInWords(ticket.getSummary().toLowerCase());
+			documents.add(new Document(parser.getWords(), ticket.toString()));
+			ticket.setDocument(new Document(parser.getWords(), ticket.toString()));
+		}
+		else if(artifact instanceof ChangeSet) {
+			TextParser parser = new TextParser();
+			ChangeSet changeset = (ChangeSet)artifact;
+			//relateChangeSetToTicket(changeset);
+			parser.parseTextInWords(changeset.getComment().toLowerCase());
+			documents.add(new Document(parser.getWords(), changeset.toString()));
+			changeset.setDocument(new Document(parser.getWords(), changeset.toString()));
+		}
+		else if (artifact instanceof Message) {
+			TextParser parser = new TextParser();
+			Message communication = (Message)artifact;
+			parser.parseTextInWords(communication.getSubject().toLowerCase());
+			parser.parseTextInWords(communication.getBody().toLowerCase());
+			documents.add(new Document(parser.getWords(), communication.toString()));
+			communication.setDocument(new Document(parser.getWords(), communication.toString()));
+		}
+		else if (artifact instanceof Wiki) {
+			Wiki wiki = (Wiki)artifact;
+				TextParser parser = new TextParser();
+				String text = "";
+				for (WikiRevision revision : wiki.getRevisions()) {
+					text += revision.getRev_text();
+				}
+				parser.parseTextInWords(text.toLowerCase());
+				documents.add(new Document(parser.getWords(), wiki.toString()));
+				wiki.setDocument(new Document(parser.getWords(), wiki.toString()));
+		}
+	}/*{*/
+	
+	for(IArtifact artifact : artifacts) {
+		
+		if(artifact instanceof Ticket) {
+			TextParser parser = new TextParser(documents);
+			Ticket ticket = (Ticket)artifact;
+			parser.parseTextInWords(ticket.getDesription().toLowerCase());
+			parser.parseTextInWords(ticket.getSummary().toLowerCase());
+			ticket.getDocument().setTfidf(parser.calculateTFIDF());
+		}
+		else if(artifact instanceof ChangeSet) {
+			TextParser parser = new TextParser(documents);
+			ChangeSet changeset = (ChangeSet)artifact;
+			parser.parseTextInWords(changeset.getComment().toLowerCase());
+			changeset.getDocument().setTfidf(parser.calculateTFIDF());
+		}
+		else if (artifact instanceof Message) {
+			TextParser parser = new TextParser(documents);
+			Message communication = (Message)artifact;
+			parser.parseTextInWords(communication.getSubject().toLowerCase());
+			parser.parseTextInWords(communication.getBody().toLowerCase());
+			communication.getDocument().setTfidf(parser.calculateTFIDF());
+		}
+		else if (artifact instanceof Wiki) {
+			Wiki wiki = (Wiki)artifact;
+				TextParser parser = new TextParser(documents);
+				String text = "";
+				for (WikiRevision revision : wiki.getRevisions()) {
+					text += revision.getRev_text();
+				}
+				parser.parseTextInWords(text.toLowerCase());
+				wiki.getDocument().setTfidf(parser.calculateTFIDF());
+		}
+	}
+	
+	for(IArtifact artifact : artifacts) {
+		System.out.println("Relationships: "+artifact.toString());
+		
+		sourceArtifact = artifact;
+		project = artifact.getProject();
+		getGenericRelationships(sourceArtifact);
+		if(sourceArtifact instanceof Ticket) {
+			TextParser parser = new TextParser(documents);
+			Ticket ticket = (Ticket)sourceArtifact;
+			parser.parseTextInWords(ticket.getDesription().toLowerCase());
+			buffers.add(ticket.getDesription().toLowerCase());
+			parser.parseTextInWords(ticket.getSummary().toLowerCase());
+			buffers.add(ticket.getSummary().toLowerCase());
+			mineRelationshipsFromText();
+			/*for(URL url : parser.getUrls()) {
+				mineRelationshipsFromURL(url);
+			}*/
+		}
+		else if(sourceArtifact instanceof ChangeSet) {
+			TextParser parser = new TextParser(documents);
+			ChangeSet changeset = (ChangeSet)sourceArtifact;
+			//relateChangeSetToTicket(changeset);
+			parser.parseTextInWords(changeset.getComment().toLowerCase());
+			buffers.add(changeset.getComment().toLowerCase());
+			mineRelationshipsFromText();
+			/*for(URL url : parser.getUrls()) {
+				mineRelationshipsFromURL(url);
+			}*/
+			
+		}
+		else if (sourceArtifact instanceof Message) {
+			TextParser parser = new TextParser(documents);
+			Message communication = (Message)sourceArtifact;
+			parser.parseTextInWords(communication.getSubject().toLowerCase());
+			buffers.add(communication.getSubject().toLowerCase());
+			parser.parseTextInWords(communication.getBody().toLowerCase());
+			buffers.add(communication.getBody().toLowerCase());
+			mineRelationshipsFromText();
+			/*for(URL url : parser.getUrls()) {
+				mineRelationshipsFromURL(url);
+			}*/
+		}
+		else if (sourceArtifact instanceof Wiki) {
+			Wiki wiki = (Wiki)sourceArtifact;
+				TextParser parser = new TextParser(documents);
+				String text = "";
+				for (WikiRevision revision : wiki.getRevisions()) {
+					text += revision.getRev_text();
+				}
+				parser.parseTextInWords(text.toLowerCase());
+				buffers.add(text.toLowerCase());
+				mineRelationshipsFromText();
+		}
+	}
+}

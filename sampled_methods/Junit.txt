@@ -1,0 +1,24 @@
+protected JButton createRunButton() {
+	JButton run= new JButton("Run");
+	run.setEnabled(true);
+	run.addActionListener(
+		new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*{*/if (fRunner != null) {
+					fTestResult.stop();
+				} else {
+					setLoading(shouldReload());
+					reset();
+					showInfo("Load Test Case...");
+					final String suiteName= getSuiteText();
+					final Test testSuite= getTest(suiteName);
+					if (testSuite != null) {
+						addToHistory(suiteName);
+						doRunTest(testSuite);
+					}
+				}/*}*/
+			}
+		}
+	);
+	return run;
+}
