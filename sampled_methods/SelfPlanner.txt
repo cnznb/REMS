@@ -1,24 +1,22 @@
-public static Task[] sortTasks(Task[] tasks) {
-    Task[] sorted = new Task[tasks.length];
-    boolean[] ord = new boolean[tasks.length];
-    int num = 0;
-    int min = 0;
-    for (int i = 0; i < ord.length; i++) {
-        ord[i] = false;
-    }
-    while (num < tasks.length) {
-        /*{*/min = Integer.MAX_VALUE;
-        for (int i = 0; i < tasks.length; i++) {
-            if ((!ord[i] && min == Integer.MAX_VALUE) ||
-                (!ord[i] &&
-                    tasks[i].domain().releaseDate().compareTo(tasks[min].domain().
-                    releaseDate()) < 0)) {
-                min = i;
+public Object clone() {
+    TaskManager clone;
+    try {
+        clone = (TaskManager)super.clone();
+        ArrayList<Task> t = new ArrayList<Task>();
+        Task[] orTasks = tasks();
+        for (int i = 0; i < orTasks.length; i++) {
+            t.add(orTasks[i]);
+        }
+        clone.setTasks(t);
+        /*{*/ArrayList<Solution> s = new ArrayList<Solution>();
+        if (pastSolutions != null) {
+            for (int i = 0; i < pastSolutions.size(); i++) {
+                s.add(pastSolutions.get(i));
             }
         }/*{*/
-        ord[min] = true;
-        sorted[num] = tasks[min];
-        num++;
+        clone.setPastSolutions(s);
+        return clone;
+    } catch (CloneNotSupportedException e) {
+        return null;
     }
-    return sorted;
 }
