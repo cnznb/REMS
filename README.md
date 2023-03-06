@@ -42,7 +42,6 @@ tqdm 4.28.1 numpy 1.15.4 pandas 0.23.4 texttable 1.5.0 gensim 3.6.0 networkx 2.4
 |       CodeT5        | train\_batch\_size=1024, embeddings\_size =768, learning\_rate=2e-4, max\_sequence\_length=512 |
 |       PLBART        | train\_batch\_size=2048, embeddings\_size =768, dropout=0.1  |
 |       CoTexT        | train\_batch\_size=128, embeddings\_size =768, learning\_rate=0.001, model\_parallelism=2, input\_length=1024 |
-| :-----------------: | :----------------------------------------------------------: |
 |      DeepWalk       | representation\_size=128, clf\_ratio=0.5, number\_walks=10, walk\_length=80, workers=8, window\_size=10 |
 |      Node2Vec       | representation\_size=128, number\_walks=10, walk\_length=80, workers=8, window\_size=10, p=0.25, q=0.25 |
 |      Walklets       | dimensions=128, walk-number=5, walk\_length=80, window\_size=5, workers=8, min\_count=1, p=1.0, q=1.0 |
