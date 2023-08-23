@@ -74,13 +74,13 @@ Relevant information is stored in rems_detection_log.txt
 
 Replace `D:\dataset\REMS\TEST\10000\CustomerAction.java` and `find` with the desired class path and method names.
 
-3.**Detection Log:** We have provided a log file to record all the information regarding your refactoring predictions using GECS. The file is located in the same directory as the GECS executable program.
+3.**Detection Log:** We have provided a log file to record all the information regarding your refactoring predictions using REMS. The file is located in the same directory as the GECS executable program.
 
 ```
 -----------------------------------------------------------------------------------------------
 Testing data : CustomerAction
 Testing time : 2023-08-23 14:40:44
-gecs recommendation result of method find [86, 107]: 
+rems recommendation result of method find [86, 107]: 
 Recommending extracting code lines: 93, 94, 95, 96
 93:- 		criteria.add( Example.create( this.customer ).excludeZeroes().ignoreCase().enableLike( MatchMode.ANYWHERE ) ); //f:hibernate
 94:- 		if ( this.customer.getId() != null ) { //f:hibernate
