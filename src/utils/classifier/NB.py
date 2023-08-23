@@ -18,7 +18,8 @@ from collections import Counter
 import pandas as pd
 import datetime
 
-_training_data_path = sys.argv[1]  # 训练数据集文件路径
+_training_data_path = '312'  # 训练数据集文件路径
+training_model_path = '' #
 _REMS_project_path = sys.argv[2]  # 测试数据集文件路径
 
 def load_data(src):
@@ -44,6 +45,7 @@ def test(estimator, filepath, trainingfile):
     :param trainingfile: 训练模型所使用的训练数据集，这里仅用于对输出结果文件命名
     :return: None
     """
+    # 1.预处理用户的class文件
     dff = pd.read_csv(filepath, header=None)
     X_test = dff.iloc[:, :-1]
     y_test = dff.iloc[:, -1]
@@ -53,9 +55,17 @@ def test(estimator, filepath, trainingfile):
     testing_project = filepath.split("\\")[-1].split(".")[0]
     print("Start testing : " + testing_project + "\n")
     y_pre = estimator.predict(X_test)
-    precision = precision_score(y_test, y_pre, labels=None, pos_label=1, average='binary', sample_weight=None)
-    recall = recall_score(y_test, y_pre, labels=None, pos_label=1, average='binary', sample_weight=None)
-    f1 = f1_score(y_test, y_pre, labels=None, pos_label=1, average='binary', sample_weight=None)
+    # 0 1 1 0 0 0 0 0 0 0 this method
+    # 请加载模型：
+    # 请输入您的class文件路径：
+    # ....
+    # 请输入您需要进行extract method重构预测的方法名：
+    # ...
+    # 正在进行预处理..
+    # 推荐重构class文件哪些行
+    # precision = precision_score(y_test, y_pre, labels=None, pos_label=1, average='binary', sample_weight=None)
+    # recall = recall_score(y_test, y_pre, labels=None, pos_label=1, average='binary', sample_weight=None)
+    # f1 = f1_score(y_test, y_pre, labels=None, pos_label=1, average='binary', sample_weight=None)
     output.write(
         "-----------------------------------------------------------------------------------------------\n")
     output.write("Testing data : " + testing_project + "\n")
@@ -74,17 +84,27 @@ def train(X_train, y_train):
     :return: None
     """
     # 网格搜索参数列表
-    tuned_parameters = {
-        "alpha": np.arange(0.1, 2, 0.1)
-    }
-    # 生成模型
-    print("Start trainging : " + "\n")
-    grid = GridSearchCV(BernoulliNB(), tuned_parameters, cv=5, scoring='roc_auc', verbose=2, n_jobs=4)
+    # tuned_parameters = {
+    #     "alpha": np.arange(0.1, 2, 0.1)
+    # }
+    # # 生成模型
+    # print("Start trainging : " + "\n")
+    # grid = GridSearchCV(BernoulliNB(alpha=0.4), tuned_parameters, cv=5, scoring='roc_auc', verbose=2, n_jobs=4)
+    model = BernoulliNB(alpha=0.4)
     # 把数据交给模型训练
-    grid.fit(X_train, y_train)
+    model.fit(X_train, y_train)
+    # 处理测试class文件，用graphcodebert预训练模型生成向量
     test(model, _REMS_project_path, _training_data_path)
 
 
 if __name__ == '__main__':
-    X_train, y_train = load_data(_training_data_path)
-    train(X_train, y_train)
+    # 1.加载预训练模型：用户输入的是模型本地路径(你去训练模型，保存起来，怎么写问chatgpt)
+    # 2.加载class文件：让用户输入class文件路径(把代码文本存在数组里)
+    # 3.指定method: 用户输入mehtod名(你用javalang包能够找到每个方法的名字和起始行，然后你用括号匹配找到方法结束行)
+    # 4.用graphcodebert生成这个指定方法每行的向量
+    # 5.把这些向量作为输入，用预训练模型去测试，得到01数组，1代表这行需要重构提取出去，然后你需要润色一下结果，展示给用户
+    # javalang  start_line  括号匹配找到 end_line
+
+
+    # X_train, y_train = load_data(_training_data_path)
+    # train(X_train, y_train)

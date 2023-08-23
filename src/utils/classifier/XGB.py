@@ -87,7 +87,7 @@ def train(X_train, y_train):
                         scoring='roc_auc', verbose=2, n_jobs=3)
     # 把数据交给模型训练
     grid.fit(X_train, y_train)
-    test(model, _REMS_project_path, _training_data_path)
+    test(grid, _REMS_project_path, _training_data_path)
 
 
 if __name__ == '__main__':
