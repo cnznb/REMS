@@ -10,7 +10,7 @@ Our package includes a pre-built command-line executable that you can use out of
 
 ```
 REMS/tool/pre_trained_model.joblib
-REMS/tool/gecs.exe
+REMS/tool/rems.exe
 ```
 
 2.**Execute Refactoring Prediction:** Run the executable program with the appropriate arguments:
