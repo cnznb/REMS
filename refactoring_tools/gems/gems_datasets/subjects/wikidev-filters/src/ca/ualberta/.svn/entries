@@ -1,0 +1,31 @@
+10
+
+dir
+12
+svn+ssh://hypatia.cs.ualberta.ca/local/hypatia/svnrepos/wikidev-filters/src/ca/ualberta
+svn+ssh://hypatia.cs.ualberta.ca/local/hypatia/svnrepos/wikidev-filters
+
+
+
+2009-10-11T03:57:00.221588Z
+12
+svn
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+fec6a785-4034-4022-a959-300d3a95d4f4
+
+cs
+dir
+
