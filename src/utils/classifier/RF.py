@@ -46,7 +46,6 @@ def test(estimator, filepath, trainingfile):
     dff = pd.read_csv(filepath, header=None)
     X_test = dff.iloc[:, :-1]
     y_test = dff.iloc[:, -1]
-    X_test, y_test = SMOTE(random_state=42).fit_resample(X_test, y_test)
     output = open("REMS_Test_" + trainingfile.split("\\")[-1].split(".")[0] + ".txt", "a+")
     # 测试数据
     testing_project = filepath.split("\\")[-1].split(".")[0]

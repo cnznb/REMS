@@ -99,7 +99,6 @@ def test(estimator, filepath, trainingfile):
                 y1.append(1)
             elif row[-1].upper() == "FALSE":
                 y1.append(0)
-    X1, y1 = SMOTE(random_state=42).fit_resample(X1, y1)
     X_test = np.array(X1)
     y_test = np.array(y1)
     X_test = X_test.reshape(X_test.shape[0], 1, X_test.shape[1])
