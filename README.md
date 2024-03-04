@@ -7,7 +7,8 @@ This document is included in the 'Recommending Extract Method Refactoring Opport
 /refactoring_tools: Extract method refactoring tools involved in the paper \
 /dataset: The training and testing dataset before embedding \
 /RQ3_questionnaire: the questionnaire and the questionnaire results of 10 participants \
-/sampled_methods: sampled methods from Xu et al.’s dataset
+/sampled_methods: sampled methods from Xu et al.’s dataset \
+/tool: an intelligent extract method refactoring detection tool
 # Tools
 ## code embedding network
 CodeBERT GraphCodeBERT CodeGPT CodeT5 CoTexT PLBART
